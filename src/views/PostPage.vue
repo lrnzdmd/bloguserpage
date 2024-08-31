@@ -5,6 +5,7 @@ import LoadingSpinner from '@/components/icons/LoadingSpinner.vue';
     import axios from 'axios';
     import { isLoggedIn } from '@/utils/useAuth';
     import { onMounted, ref } from 'vue';
+import { RouterLink } from 'vue-router';
 
     const props = defineProps({
         postId: Number,
@@ -82,8 +83,8 @@ import LoadingSpinner from '@/components/icons/LoadingSpinner.vue';
                     <p class="text-lg font-bold text-gray-700 cursor-pointer " tabindex="0" role="link">
                         {{ posts[index].author.username }}</p>
                 </div>
-                <a v-if="posts[index + 1]" :href="`/posts/${posts[index + 1].id}`" class="text-blue-600 hover:underline"
-                    tabindex="0" role="link">Older posts</a>
+                <RouterLink v-if="posts[index + 1]" :href="`/posts/${posts[index + 1].id}`" class="text-blue-600 hover:underline"
+                    tabindex="0" role="link">Older posts</RouterLink>
             </div>
         </div>
     </div>
