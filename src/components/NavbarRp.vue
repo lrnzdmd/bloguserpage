@@ -10,6 +10,7 @@ const isOpen = ref(false);
 function handleLogout() {
     logout();
     router.push('/login');
+    toggleMenu();
 }
 
 function toggleMenu() {
