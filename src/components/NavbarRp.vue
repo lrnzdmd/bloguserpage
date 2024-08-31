@@ -46,7 +46,7 @@ function toggleMenu() {
                 <div :class="[isOpen ? 'translate-x-0 opacity-100 ' : 'opacity-0 -translate-x-full']" class="absolute inset-x-0 z-20 w-full px-6 py-4 transition-all duration-300 ease-in-out bg-white dark:bg-gray-800 lg:mt-0 lg:p-0 lg:top-0 lg:relative lg:bg-transparent lg:w-auto lg:opacity-100 lg:translate-x-0 lg:flex lg:items-center">
                     <div v-if="isLoggedIn" class="flex flex-col -mx-6 lg:flex-row lg:items-center">
                         <RouterLink to="/" class="px-4 py-1.5 mx-3 mt-2 text-gray-700 transition-colors duration-300 transform rounded-lg lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Home</RouterLink>
-                        <button @click="handleLogout" class="px-4 py-1.5 mx-3 mt-2 text-gray-700 transition-colors duration-300 transform rounded-lg lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Logout</button>     
+                        <button @click="handleLogout" class="px-4 py-1.5 mx-3 mt-2 text-left text-gray-700 transition-colors duration-300 transform rounded-lg lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Logout</button>     
                     </div>
                     <div v-else class="flex flex-col -mx-6 lg:flex-row lg:items-center">
                         <RouterLink to="/" class="px-4 py-1.5 mx-3 mt-2 text-gray-700 transition-colors duration-300 transform rounded-lg lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Home</RouterLink>
