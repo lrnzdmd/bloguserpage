@@ -4,15 +4,13 @@ import formatDate from '@/utils/formatDate';
 import LoadingSpinner from '@/components/icons/LoadingSpinner.vue';
     import axios from 'axios';
     import { isLoggedIn } from '@/utils/useAuth';
-    import { onMounted, ref, watch } from 'vue';
-import { RouterLink, useRoute } from 'vue-router';
-
+    import { onMounted, ref } from 'vue';
 
     const props = defineProps({
         postId: Number,
     });
-    const route = useRoute();
-    const posId = ref(Number(route.params.postId));
+
+
     const posts = ref([]);
     const index = ref('');
     const loading = ref(true);
@@ -20,28 +18,10 @@ import { RouterLink, useRoute } from 'vue-router';
     const commentText = ref('');
     const errorMsg = ref('');
 
-    watch(() => route.params.postId, async (newPostId) => {
-    posId.value = Number(newPostId); // Aggiorna l'ID del post
-    loading.value = true; // Imposta lo stato di caricamento a true
-    await loadPost(); // Ricarica i dati del post
-    });
-
-
     async function getPostList(){
         const response = await axios.get('https://deliberate-collie-birdiepoop-197e5571.koyeb.app/api/posts');
         return response.data.posts
     }
-
-    async function loadPost() {
-    try {
-        posts.value = await getPostList();
-        index.value = posts.value.findIndex(post => post.id === posId.value);
-    } catch (e) {
-        error.value = 'Cannot load the post, please try later.';
-    } finally {
-        loading.value = false;
-    }
-}
 
     async function handleSubmit() {
         try {
@@ -102,8 +82,8 @@ import { RouterLink, useRoute } from 'vue-router';
                     <p class="text-lg font-bold text-gray-700 cursor-pointer " tabindex="0" role="link">
                         {{ posts[index].author.username }}</p>
                 </div>
-                <RouterLink v-if="posts[index + 1]" :to="`/posts/${posts[index + 1].id}`" class="text-blue-600 hover:underline"
-                    tabindex="0" role="link">Older posts</RouterLink>
+                <a v-if="posts[index + 1]" :href="`/posts/${posts[index + 1].id}`" class="text-blue-600 hover:underline"
+                    tabindex="0" role="link">Older posts</a>
             </div>
         </div>
     </div>
@@ -113,7 +93,7 @@ import { RouterLink, useRoute } from 'vue-router';
     <div class="flex justify-center mt-8">
         <p v-if="errorMsg" class="text-lg text-red-500">{{ errorMsg }}</p>
         <div v-if="posts.length > 0" class="w-3/4">
-            <h3 class="self-start px-8 text-2xl font-bold text-gray-700 my-4">Comments</h3>
+            <h3 class="self-start px-8 text-2xl font-bold text-gray-700">Comments</h3>
             <div class="px-8 py-8" v-for="comment in posts[index].comments" :key="comment.id">
                 <CommentCard :username="comment.commenter.username" :text="comment.text"
                     :created-at="formatDate(comment.createdAt)"></CommentCard>
