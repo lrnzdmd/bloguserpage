@@ -4,14 +4,15 @@ import formatDate from '@/utils/formatDate';
 import LoadingSpinner from '@/components/icons/LoadingSpinner.vue';
     import axios from 'axios';
     import { isLoggedIn } from '@/utils/useAuth';
-    import { onMounted, ref } from 'vue';
-import { RouterLink } from 'vue-router';
+    import { onMounted, ref, watch } from 'vue';
+import { RouterLink, useRoute } from 'vue-router';
+
 
     const props = defineProps({
         postId: Number,
     });
-
-
+    const route = useRoute();
+    const posId = ref(Number(route.params.postId));
     const posts = ref([]);
     const index = ref('');
     const loading = ref(true);
@@ -19,10 +20,28 @@ import { RouterLink } from 'vue-router';
     const commentText = ref('');
     const errorMsg = ref('');
 
+    watch(() => route.params.postId, async (newPostId) => {
+    posId.value = Number(newPostId); // Aggiorna l'ID del post
+    loading.value = true; // Imposta lo stato di caricamento a true
+    await loadPost(); // Ricarica i dati del post
+    });
+
+
     async function getPostList(){
         const response = await axios.get('https://deliberate-collie-birdiepoop-197e5571.koyeb.app/api/posts');
         return response.data.posts
     }
+
+    async function loadPost() {
+    try {
+        posts.value = await getPostList();
+        index.value = posts.value.findIndex(post => post.id === posId.value);
+    } catch (e) {
+        error.value = 'Cannot load the post, please try later.';
+    } finally {
+        loading.value = false;
+    }
+}
 
     async function handleSubmit() {
         try {
