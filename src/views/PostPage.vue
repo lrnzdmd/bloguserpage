@@ -98,7 +98,7 @@ import LoadingSpinner from '@/components/icons/LoadingSpinner.vue';
                 <CommentCard :username="comment.commenter.username" :text="comment.text"
                     :created-at="formatDate(comment.createdAt)"></CommentCard>
             </div>
-            <div class="bg-black w-full  self-center mx-auto" style="height: 1px;"></div>
+            <div class="bg-black w-full  self-center mx-auto px-4" style="height: 1px;"></div>
             
                 <form @submit.prevent v-if="isLoggedIn" class="flex flex-col w-full px-8 mt-4" action="" method="post">
         <textarea v-model="commentText" class="w-full py-3 mt-2 text-gray-700 bg-white border rounded-lg px-4  focus:border-sky-400  focus:ring-sky-300 focus:outline-none focus:ring focus:ring-opacity-40" required name="message" id="message" placeholder='New comment...'></textarea>

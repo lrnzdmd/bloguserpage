@@ -51,9 +51,9 @@ onMounted(async () => {
                 <p class=" text-sky-500 uppercase tracking-wider">bird wisdom</p>
                 <h2 class=" text-3xl xl:text-4xl font-bold mt-4 text-gray-800 capitalize">Here to fulfill your daily
                     bird news needs</h2>
-                <p class=" text-gray-500 mt-4 text-lg">Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta
-                    error odit vel minima optio consequuntur atque omnis, repellendus eos, rerum totam quas vitae
-                    voluptatibus, facere distinctio fugit? Nam, iure expedita!</p>
+                <p class=" text-gray-500 mt-4 text-lg">Welcome to a unique world of knowledge, where a wise bird shares insights on everything under the sun!
+                                                             From the latest news to intriguing facts, this is your go-to place for diverse information, delivered with 
+                                                             a touch of feathered wisdom. Stay curious and explore a variety of topics, all narrated by your friendly avian guide.</p>
             </div>
         </div>
     </header>
