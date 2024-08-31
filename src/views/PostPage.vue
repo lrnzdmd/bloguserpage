@@ -83,7 +83,7 @@ import { RouterLink } from 'vue-router';
                     <p class="text-lg font-bold text-gray-700 cursor-pointer " tabindex="0" role="link">
                         {{ posts[index].author.username }}</p>
                 </div>
-                <RouterLink v-if="posts[index + 1]" :href="`/posts/${posts[index + 1].id}`" class="text-blue-600 hover:underline"
+                <RouterLink v-if="posts[index + 1]" :to="`/posts/${posts[index + 1].id}`" class="text-blue-600 hover:underline"
                     tabindex="0" role="link">Older posts</RouterLink>
             </div>
         </div>
