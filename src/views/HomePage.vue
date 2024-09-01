@@ -6,6 +6,7 @@ import formatDate from '@/utils/formatDate';
 import axios from 'axios';
 import { onMounted, ref } from 'vue';
 import LoadingSpinner from '@/components/icons/LoadingSpinner.vue';
+import bgImage from '../assets/bg.jpg'
 
 const articles = ref({
     latest: [],
@@ -45,13 +46,13 @@ onMounted(async () => {
 </script>
 
 <template>
-    <header class=" h-[28rem] bg-gray-50">
-        <div class=" container mx-auto px-4 flex h-full py-6 items-center">
-            <div class=" max-w-xl">
+    <header class=" h-[30rem] bg-cover bg-gray-50" :style="{ backgroundImage: `url(${bgImage})`, backgroundPosition: 'center 14%'}">
+        <div class=" container mx-auto px-4 flex justify-end h-full py-6 items-center">
+            <div class="bg-white bg-opacity-50 rounded-md p-10 max-w-xl">
                 <p class=" text-sky-500 uppercase tracking-wider">bird wisdom</p>
                 <h2 class=" text-3xl xl:text-4xl font-bold mt-4 text-gray-800 capitalize">Here to fulfill your daily
                     bird news needs</h2>
-                <p class=" text-gray-500 mt-4 text-lg">Welcome to a unique world of knowledge, where a wise bird shares insights on everything under the sun!
+                <p class=" text-gray-700 drop-shadow-sm mt-4 text-lg">Welcome to a unique world of knowledge, where a wise bird shares insights on everything under the sun!
                                                              From the latest news to intriguing facts, this is your go-to place for diverse information, delivered with 
                                                              a touch of feathered wisdom. Stay curious and explore a variety of topics, all narrated by your friendly avian guide.</p>
             </div>
